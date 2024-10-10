@@ -1,2 +1,1 @@
-naoqi
 python-dotenv
