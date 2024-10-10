@@ -1,19 +1,19 @@
-from naoqi import ALProxy
-from dotenv import load_dotenv
+from src.nao_controller import NaoController
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
 def main():
-    # Coonect to the robot
+    # Fetch robot IP and port from environment variables
     robot_ip = os.getenv("ROBOT_IP")
     robot_port = int(os.getenv("ROBOT_PORT", 9559))
 
-    # Create a proxy to ALTextToSpeech
-    tts = ALProxy("ALTextToSpeech", robot_ip, robot_port)
+    # Create NAO controller object
+    nao = NaoController(robot_ip, robot_port)
 
-    # Say a test message
-    tts.say("Hello world!")
+    # Example action: Make NAO say "Hello World"
+    nao.say("Hello world!")
 
 if __name__ == "__main__":
     main()
